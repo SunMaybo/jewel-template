@@ -1,7 +1,7 @@
 package jsonrpc
 
 import (
-	"jewel-template/template/rest"
+	"github.com/SunMaybo/jewel-template/template/rest"
 	"net/http"
 	"time"
 )

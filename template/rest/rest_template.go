@@ -2,7 +2,6 @@ package rest
 
 import (
 	"bytes"
-	"github.com/cihub/seelog"
 	"io/ioutil"
 	"net/http"
 	"fmt"
@@ -10,6 +9,7 @@ import (
 	"regexp"
 	"encoding/json"
 	"time"
+	"log"
 )
 
 type Template struct {
@@ -66,17 +66,17 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 	}
 	resp, err := template.Client.Do(req)
 	if err != nil {
-		seelog.Error(err)
+		log.Println(err)
 		return []byte{}, err
 	}
 	defer resp.Body.Close()
 	BodyByte, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		seelog.Error(err)
+		log.Println(err)
 		return []byte{}, err
 	}
 	if resp.StatusCode != 200 {
-		seelog.Error(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
+		log.Println(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
 		return BodyByte, errors.New(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
 	}
 	return BodyByte, nil

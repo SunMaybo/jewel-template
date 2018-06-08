@@ -2,9 +2,9 @@ package jsonrpc
 
 import (
 	"testing"
-	"jewel-template/template/rest"
 	"time"
 	"fmt"
+	"github.com/SunMaybo/jewel-template/template/rest"
 )
 
 func TestClient_Call(t *testing.T) {
