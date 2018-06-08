@@ -1,0 +1,177 @@
+package rest
+
+import (
+	"bytes"
+	"github.com/cihub/seelog"
+	"io/ioutil"
+	"net/http"
+	"fmt"
+	"errors"
+	"regexp"
+	"encoding/json"
+	"time"
+)
+
+type Template struct {
+	Client *http.Client
+}
+type ClientConfig struct {
+	MaxIdleConns       int
+	IdleConnTimeout    time.Duration
+	DisableCompression bool
+	SocketTimeout      time.Duration
+	Authorization      string
+}
+
+func Default() *RestTemplate {
+	tr := &http.Transport{
+		MaxIdleConns:       10,
+		IdleConnTimeout:    3 * time.Second,
+		DisableCompression: true,
+	}
+	client := &http.Client{Transport: tr}
+	client.Timeout = 5 * time.Second
+	return &RestTemplate{
+		Template: Template{
+			Client: client,
+		},
+	}
+}
+func Config(cfg ClientConfig) *RestTemplate {
+	tr := &http.Transport{
+		MaxIdleConns:       cfg.MaxIdleConns,
+		IdleConnTimeout:    cfg.IdleConnTimeout,
+		DisableCompression: cfg.DisableCompression,
+	}
+	client := &http.Client{Transport: tr}
+	client.Timeout = cfg.SocketTimeout
+	return &RestTemplate{
+		Template: Template{
+			Client: client,
+		},
+		ClientConfig: &cfg,
+	}
+}
+func (template *Template) Call(url string, param []byte, method string, Header http.Header) ([]byte, error) {
+	reader := bytes.NewReader(param)
+	var req *http.Request
+	var err error
+	req, err = http.NewRequest(method, url, reader)
+	if err != nil {
+		fmt.Println("req err: ", err)
+		return []byte{}, err
+	}
+	if Header != nil {
+		req.Header = Header
+	}
+	resp, err := template.Client.Do(req)
+	if err != nil {
+		seelog.Error(err)
+		return []byte{}, err
+	}
+	defer resp.Body.Close()
+	BodyByte, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		seelog.Error(err)
+		return []byte{}, err
+	}
+	if resp.StatusCode != 200 {
+		seelog.Error(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
+		return BodyByte, errors.New(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
+	}
+	return BodyByte, nil
+}
+
+type RestTemplate struct {
+	Template
+	ClientConfig *ClientConfig
+}
+
+func (rest *RestTemplate) GetForObject(url string, response interface{}, uriVariables ... string) error {
+	return rest.ExecuteForObject(url, http.MethodGet, nil, nil, response, uriVariables...)
+}
+
+func (rest *RestTemplate) PostForObject(url string, body, response interface{}, uriVariables ... string) error {
+	return rest.ExecuteForObject(url, http.MethodPost, nil, body, response, uriVariables...)
+}
+func (rest *RestTemplate) PutForObject(url string, body, response interface{}, uriVariables ... string) error {
+	return rest.ExecuteForObject(url, http.MethodPut, nil, body, response, uriVariables...)
+}
+
+func (rest *RestTemplate) DeleteForObject(url string, response interface{}, uriVariables ... string) error {
+	return rest.ExecuteForObject(url, http.MethodDelete, nil, nil, response, uriVariables...)
+}
+
+func (rest *RestTemplate) HeadForObject(url string, header http.Header, response interface{}, uriVariables ... string) error {
+	return rest.ExecuteForObject(url, http.MethodHead, header, nil, response, uriVariables...)
+}
+
+func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error {
+	url = convertToUrl(url, uriVariables...)
+	if header == nil {
+		header = http.Header{}
+	}
+	header.Set("Content-Type", "application/json")
+	if rest.ClientConfig != nil && rest.ClientConfig.Authorization != "" {
+		header.Set("Authorization", rest.ClientConfig.Authorization)
+	}
+
+	buff, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
+	result, err := rest.Call(url, buff, method, header)
+	if err != nil {
+		return err
+	}
+	fmt.Println(string(result))
+	json.Unmarshal(result, response)
+	return nil
+}
+
+func (rest *RestTemplate) Execute(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error {
+	url = convertToUrl(url, uriVariables...)
+	if header == nil {
+		header = http.Header{}
+	}
+	if rest.ClientConfig != nil && rest.ClientConfig.Authorization != "" {
+		header.Set("Authorization", rest.ClientConfig.Authorization)
+	}
+	buff, err := json.Marshal(body)
+	if err != nil {
+		return err
+	}
+	result, err := rest.Call(url, buff, method, header)
+	if err != nil {
+		return err
+	}
+	json.Unmarshal(result, response)
+	return nil
+}
+
+func convertToUrl(url string, uriVariables ... string) string {
+	regex := `:([a-zA-Z_][^/?&]+)[/?&]{0,1}`
+	re, _ := regexp.Compile(regex)
+	var path []byte
+	urlByte := []byte(url)
+	all := re.FindAllSubmatchIndex(urlByte, -1)
+	for i, point := range all {
+		if i == 0 {
+			path = append(path, urlByte[:point[2]-1]...)
+		} else {
+			path = append(path, urlByte[(all[i-1])[3]:point[2]-1]...)
+		}
+		if len(uriVariables) <= i {
+			path = append(path, urlByte[(all[i])[2]-1:point[3]]...)
+		} else {
+			path = append(path, []byte(uriVariables[i])...)
+		}
+
+	}
+	if len(all) == 0 {
+		path = append(path, urlByte[:]...)
+	} else {
+		path = append(path, urlByte[all[len(all)-1][3]:]...)
+	}
+	return string(path)
+}
