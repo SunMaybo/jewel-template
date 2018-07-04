@@ -20,6 +20,7 @@ fmt.Println(fmt.Sprintf("%+v", resp))
 		IdleConnTimeout:3*time.Second,
 		DisableCompression:true,
 		SocketTimeout:3*time.Second,
+		ReplyCount:3,
 	})
 	var resp map[string]interface{}
 	err := restTemplate.GetForObject("http://13.229.115.157:8877/info", &resp)
