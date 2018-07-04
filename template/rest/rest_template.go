@@ -13,7 +13,9 @@ import (
 )
 
 type Template struct {
-	Client *http.Client
+	Client      *http.Client
+	EnableReply bool
+	ReplyCount  int
 }
 type ClientConfig struct {
 	MaxIdleConns       int
@@ -21,6 +23,7 @@ type ClientConfig struct {
 	DisableCompression bool
 	SocketTimeout      time.Duration
 	Authorization      string
+	ReplyCount         int
 }
 
 func Default() *RestTemplate {
@@ -33,7 +36,9 @@ func Default() *RestTemplate {
 	client.Timeout = 5 * time.Second
 	return &RestTemplate{
 		Template: Template{
-			Client: client,
+			Client:      client,
+			ReplyCount:  3,
+			EnableReply: true,
 		},
 	}
 }
@@ -47,7 +52,9 @@ func Config(cfg ClientConfig) *RestTemplate {
 	client.Timeout = cfg.SocketTimeout
 	return &RestTemplate{
 		Template: Template{
-			Client: client,
+			Client:      client,
+			ReplyCount:  cfg.ReplyCount,
+			EnableReply: true,
 		},
 		ClientConfig: &cfg,
 	}
@@ -76,8 +83,38 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 		return []byte{}, err
 	}
 	if resp.StatusCode != 200 {
-		log.Println(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
-		return BodyByte, errors.New(fmt.Sprintf("%d-%s", resp.StatusCode, "接口调用失败"))
+		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "接口调用失败", string(BodyByte)))
+	}
+	return BodyByte, nil
+}
+
+func (template *Template) CallWithReply(url string, param []byte, method string, header http.Header, count int) ([]byte, error) {
+	reader := bytes.NewReader(param)
+	var req *http.Request
+	var err error
+	req, err = http.NewRequest(method, url, reader)
+	if err != nil {
+		fmt.Println("req err: ", err)
+		return []byte{}, err
+	}
+	if header != nil {
+		req.Header = header
+	}
+	resp, err := template.Client.Do(req)
+	if err != nil && count < template.ReplyCount {
+		log.Println(err)
+		return template.CallWithReply(url, param, method, header, count+1)
+	} else if err != nil && count >= template.ReplyCount {
+		return []byte{}, err
+	}
+	defer resp.Body.Close()
+	BodyByte, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Println(err)
+		return []byte{}, err
+	}
+	if resp.StatusCode != 200 {
+		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "接口调用失败", string(BodyByte)))
 	}
 	return BodyByte, nil
 }
@@ -115,17 +152,28 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	if rest.ClientConfig != nil && rest.ClientConfig.Authorization != "" {
 		header.Set("Authorization", rest.ClientConfig.Authorization)
 	}
-
 	buff, err := json.Marshal(body)
 	if err != nil {
 		return err
 	}
-	result, err := rest.Call(url, buff, method, header)
-	if err != nil {
-		return err
+	defer func() {
+		if err := recover(); err != nil {
+			log.Println(err)
+		}
+	}()
+	if rest.EnableReply {
+		result, err := rest.CallWithReply(url, buff, method, header, 0)
+		if err != nil {
+			return err
+		}
+		json.Unmarshal(result, response)
+	} else {
+		result, err := rest.Call(url, buff, method, header)
+		if err != nil {
+			return err
+		}
+		json.Unmarshal(result, response)
 	}
-	fmt.Println(string(result))
-	json.Unmarshal(result, response)
 	return nil
 }
 
@@ -141,11 +189,24 @@ func (rest *RestTemplate) Execute(url, method string, header http.Header, body, 
 	if err != nil {
 		return err
 	}
-	result, err := rest.Call(url, buff, method, header)
-	if err != nil {
-		return err
+	defer func() {
+		if err := recover(); err != nil {
+			log.Println(err)
+		}
+	}()
+	if rest.EnableReply {
+		result, err := rest.CallWithReply(url, buff, method, header, 0)
+		if err != nil {
+			return err
+		}
+		json.Unmarshal(result, response)
+	} else {
+		result, err := rest.Call(url, buff, method, header)
+		if err != nil {
+			return err
+		}
+		json.Unmarshal(result, response)
 	}
-	json.Unmarshal(result, response)
 	return nil
 }
 

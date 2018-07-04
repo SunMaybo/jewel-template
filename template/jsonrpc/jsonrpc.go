@@ -16,19 +16,16 @@ type Error struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
 }
-
 type ResponseBody struct {
 	JsonRpc string      `json:"jsonrpc"`
 	Error   error       `json:"error,omitempty"`
 	Result  interface{} `json:"result"`
 	Id      int64       `json:"id"`
 }
-
 type Client struct {
 	Url      string
 	template rest.RestTemplate
 }
-
 func Config(cfg rest.ClientConfig, url string) *Client {
 	tr := &http.Transport{
 		MaxIdleConns:       cfg.MaxIdleConns,
@@ -47,7 +44,6 @@ func Config(cfg rest.ClientConfig, url string) *Client {
 		Url: url,
 	}
 }
-
 func Default() *Client {
 	tr := &http.Transport{
 		MaxIdleConns:       10,

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba64ccf0-db36-4330-b476-0800f0fb4b56" name="Default" comment="" />
+    <list default="true" id="ba64ccf0-db36-4330-b476-0800f0fb4b56" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/template/jsonrpc/jsonrpc.go" afterPath="$PROJECT_DIR$/template/jsonrpc/jsonrpc.go" />
+      <change beforePath="$PROJECT_DIR$/template/rest/rest_template.go" afterPath="$PROJECT_DIR$/template/rest/rest_template.go" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,113 +17,82 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="jsonrpc.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc.go">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="jsonrpc.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            <state relative-caret-position="208">
+              <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
               <folding>
-                <element signature="e#17#79#0" expanded="true" />
+                <element signature="e#118#281#0" expanded="false" />
+                <element signature="e#293#366#0" expanded="false" />
+                <element signature="e#385#549#0" expanded="false" />
+                <element signature="e#562#617#0" expanded="false" />
+                <element signature="n#!!block;n#Config#0" expanded="false" />
+                <element signature="n#!!block;n#Default#0" expanded="false" />
+                <element signature="n#!!block;n#Call#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="jsonrpc_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc_test.go">
+        <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="104">
+              <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+              <folding>
+                <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../jewel-template/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor>
+                <markdownNavigatorState />
+              </second_editor>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rest_template.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../jewel-template/template/rest/rest_template.go">
+      <file leaf-file-name="rest_template.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="127" column="27" lean-forward="true" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="27" />
+            <state relative-caret-position="431">
+              <caret line="122" column="16" lean-forward="true" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
               <folding>
-                <element signature="e#14#137#0" expanded="true" />
+                <element signature="e#14#117#0" expanded="true" />
+                <element signature="e#133#164#0" expanded="false" />
+                <element signature="e#183#337#0" expanded="false" />
                 <element signature="n#!!block;n#Default#0" expanded="false" />
-                <element signature="e#1832#1880#0" expanded="false" />
-                <element signature="n#!!block;n#Execute#0" expanded="false" />
+                <element signature="n#!!block;n#Config#0" expanded="false" />
+                <element signature="e#1767#1815#0" expanded="false" />
+                <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+                <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+                <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+                <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
                 <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reader.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/bytes/reader.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="response.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/response.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="template_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../jewel-template/template/rest/template_test.go">
+        <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="21" column="41" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
+            <state relative-caret-position="181">
+              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
               <folding>
                 <element signature="e#14#66#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="panic.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/runtime/panic.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="542" column="0" lean-forward="false" selection-start-line="542" selection-start-column="0" selection-end-line="542" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testing.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/testing/testing.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="610" column="0" lean-forward="false" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="method.go" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/method.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -135,7 +111,10 @@
       <find>fmt</find>
     </findStrings>
   </component>
-  <component name="GOROOT" path="/usr/local/Cellar/go/1.7.3/libexec" />
+  <component name="GOROOT" path="$USER_HOME$/tools/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -144,13 +123,13 @@
         <option value="$PROJECT_DIR$/util/template_teset.go" />
         <option value="$PROJECT_DIR$/util/template_test.go" />
         <option value="$PROJECT_DIR$/util/rest_template.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/template/rest_template.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/template/template_test.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc_test.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/template/rest/rest_template.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/template/rest/template_test.go" />
-        <option value="$PROJECT_DIR$/../jewel-template/main.go" />
+        <option value="$PROJECT_DIR$/template/rest_template.go" />
+        <option value="$PROJECT_DIR$/template/template_test.go" />
+        <option value="$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go" />
+        <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/template/jsonrpc/jsonrpc.go" />
+        <option value="$PROJECT_DIR$/template/rest/template_test.go" />
+        <option value="$PROJECT_DIR$/template/rest/rest_template.go" />
       </list>
     </option>
   </component>
@@ -161,7 +140,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="-320" />
+    <option name="x" value="-241" />
     <option name="y" value="-1080" />
     <option name="width" value="1920" />
     <option name="height" value="1080" />
@@ -181,35 +160,51 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="go-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
               <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="go-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
               <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
               <item name="template" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="jsonrpc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
+              <item name="template" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Markdown" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../jewel-template/template/rest" />
-      <recent name="$PROJECT_DIR$/../jewel-template/template" />
+      <recent name="$PROJECT_DIR$/template/rest" />
+      <recent name="$PROJECT_DIR$/template" />
       <recent name="$PROJECT_DIR$/util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -244,13 +239,13 @@
       <working_directory value="$PROJECT_DIR$/" />
       <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/../jewel-template/main.go" />
+      <filePath value="$PROJECT_DIR$/main.go" />
       <package value="go-test" />
       <directory value="$PROJECT_DIR$/" />
     </configuration>
     <configuration name="TestClient_Call in jsonrpc_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="jewel-template" />
-      <working_directory value="$PROJECT_DIR$/../jewel-template/template/jsonrpc" />
+      <working_directory value="$PROJECT_DIR$/template/jsonrpc" />
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
@@ -259,7 +254,7 @@
     </configuration>
     <configuration name="TestGet in template_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="jewel-template" />
-      <working_directory value="$PROJECT_DIR$/../jewel-template/template/rest" />
+      <working_directory value="$PROJECT_DIR$/template/rest" />
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
@@ -268,7 +263,7 @@
     </configuration>
     <configuration name="TestUriRegexp in template_test.go (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="jewel-template" />
-      <working_directory value="$PROJECT_DIR$/../jewel-template/template/rest" />
+      <working_directory value="$PROJECT_DIR$/template/rest" />
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
@@ -354,24 +349,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-320" y="-1080" width="1920" height="1080" extended-state="6" />
+    <frame x="-241" y="-1080" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19111349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20979765" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43711966" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.047666337" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36308315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -385,24 +381,146 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc_test.go</url>
+          <url>file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go</url>
           <line>10</line>
-          <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/../jewel-template/template/rest/template_test.go</url>
+          <url>file://$PROJECT_DIR$/template/rest/template_test.go</url>
           <line>15</line>
-          <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../jewel-template/config/app-dev.yml">
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3250">
+          <caret line="138" column="27" lean-forward="false" selection-start-line="138" selection-start-column="27" selection-end-line="138" selection-end-column="27" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3406">
+          <caret line="144" column="18" lean-forward="false" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -410,103 +528,201 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/transport.go">
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23351">
-          <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="79" column="8" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/request.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="978">
-          <caret line="134" column="8" lean-forward="false" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/method.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/util/httputil.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/io/io.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="125" column="5" lean-forward="false" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/response.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/runtime/panic.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="542" column="0" lean-forward="false" selection-start-line="542" selection-start-column="0" selection-end-line="542" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/testing/testing.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="610" column="0" lean-forward="false" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/bytes/reader.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/template/rest/rest_template.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="127" column="27" lean-forward="true" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="27" />
+        <state relative-caret-position="483">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
           <folding>
-            <element signature="e#14#137#0" expanded="true" />
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3013">
+          <caret line="144" column="18" lean-forward="false" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
             <element signature="n#!!block;n#Default#0" expanded="false" />
-            <element signature="e#1832#1880#0" expanded="false" />
-            <element signature="n#!!block;n#Execute#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
             <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/template/rest/template_test.go">
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
+        <state relative-caret-position="260">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3406">
+          <caret line="144" column="18" lean-forward="false" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="21" column="41" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3042">
+          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
           <caret line="21" column="41" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
           <folding>
             <element signature="e#14#66#0" expanded="true" />
@@ -514,23 +730,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/main.go">
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="104">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc_test.go">
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/README.md">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -538,12 +784,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../jewel-template/template/jsonrpc/jsonrpc.go">
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="2704">
+          <caret line="127" column="27" lean-forward="true" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="27" />
           <folding>
-            <element signature="e#17#79#0" expanded="true" />
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="21" column="41" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app-dev.yml" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/transport.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/client.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/request.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/method.go" />
+    <entry file="file://$PROJECT_DIR$/util/httputil.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/io/io.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/net/http/response.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/runtime/panic.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/testing/testing.go" />
+    <entry file="file:///usr/local/Cellar/go/1.7.3/libexec/src/bytes/reader.go" />
+    <entry file="file://$PROJECT_DIR$/main.go" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!block;n#TestClient_Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+          <folding>
+            <element signature="e#118#281#0" expanded="false" />
+            <element signature="e#293#366#0" expanded="false" />
+            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#562#617#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Call#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding>
+            <element signature="e#14#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="122" column="16" lean-forward="true" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="false" />
+            <element signature="e#183#337#0" expanded="false" />
+            <element signature="n#!!block;n#Default#0" expanded="false" />
+            <element signature="n#!!block;n#Config#0" expanded="false" />
+            <element signature="e#1767#1815#0" expanded="false" />
+            <element signature="n#!!block;n#PostForObject#0" expanded="false" />
+            <element signature="n#!!block;n#PutForObject#0" expanded="false" />
+            <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
+            <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+            <element signature="n#!!block;n#convertToUrl#0" expanded="false" />
           </folding>
         </state>
       </provider>
