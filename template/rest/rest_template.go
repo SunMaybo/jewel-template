@@ -101,13 +101,13 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 		req.Header = header
 	}
 	resp, err := template.Client.Do(req)
+	defer resp.Body.Close()
 	if err != nil && count < template.ReplyCount {
 		log.Println(err)
 		return template.CallWithReply(url, param, method, header, count+1)
 	} else if err != nil && count >= template.ReplyCount {
 		return []byte{}, err
 	}
-	defer resp.Body.Close()
 	BodyByte, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Println(err)
