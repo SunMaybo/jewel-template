@@ -142,6 +142,36 @@ func (rest *RestTemplate) DeleteForObject(url string, response interface{}, uriV
 func (rest *RestTemplate) HeadForObject(url string, header http.Header, response interface{}, uriVariables ... string) error {
 	return rest.ExecuteForObject(url, http.MethodHead, header, nil, response, uriVariables...)
 }
+func (rest *RestTemplate) ExecuteForJsonString(url, method string, header http.Header, body string, response interface{}, uriVariables ... string) error {
+	url = convertToUrl(url, uriVariables...)
+	if header == nil {
+		header = http.Header{}
+	}
+	header.Set("Content-Type", "application/json")
+	if rest.ClientConfig != nil && rest.ClientConfig.Authorization != "" {
+		header.Set("Authorization", rest.ClientConfig.Authorization)
+	}
+	buff := []byte(body)
+	defer func() {
+		if err := recover(); err != nil {
+			log.Println(err)
+		}
+	}()
+	if rest.EnableReply {
+		result, err := rest.CallWithReply(url, buff, method, header, 0)
+		if err != nil {
+			return err
+		}
+		json.Unmarshal(result, response)
+	} else {
+		result, err := rest.Call(url, buff, method, header)
+		if err != nil {
+			return err
+		}
+		json.Unmarshal(result, response)
+	}
+	return nil
+}
 
 func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error {
 	url = convertToUrl(url, uriVariables...)
@@ -176,7 +206,6 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	}
 	return nil
 }
-
 func (rest *RestTemplate) Execute(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error {
 	url = convertToUrl(url, uriVariables...)
 	if header == nil {
