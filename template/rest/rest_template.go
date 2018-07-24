@@ -102,8 +102,9 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	}
 	resp, err := template.Client.Do(req)
 	if err != nil && count < template.ReplyCount {
+		count++
 		log.Printf("reply on %d\n", count)
-		return template.CallWithReply(url, param, method, header, count+1)
+		return template.CallWithReply(url, param, method, header, count)
 	} else if err != nil && count >= template.ReplyCount {
 		return []byte{}, err
 	}
@@ -186,6 +187,7 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	if err != nil {
 		return err
 	}
+	fmt.Println(string(buff))
 	if rest.EnableReply {
 		result, err := rest.CallWithReply(url, buff, method, header, 0)
 		if err != nil {
