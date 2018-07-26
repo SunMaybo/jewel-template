@@ -65,7 +65,7 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		fmt.Println("req err: ", err)
+		fmt.Println("request err: ", err)
 		return []byte{}, err
 	}
 	if Header != nil {
@@ -83,7 +83,7 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 		return []byte{}, err
 	}
 	if resp.StatusCode != 200 {
-		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "接口调用失败", string(BodyByte)))
+		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "error", string(BodyByte)))
 	}
 	return BodyByte, nil
 }
@@ -103,7 +103,7 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	resp, err := template.Client.Do(req)
 	if err != nil && count < template.ReplyCount {
 		count++
-		log.Printf("reply on %d\n", count)
+		log.Println(err)
 		return template.CallWithReply(url, param, method, header, count)
 	} else if err != nil && count >= template.ReplyCount {
 		return []byte{}, err
@@ -115,7 +115,7 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 		return []byte{}, err
 	}
 	if resp.StatusCode != 200 {
-		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "接口调用失败", string(BodyByte)))
+		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "error", string(BodyByte)))
 	}
 	return BodyByte, nil
 }
