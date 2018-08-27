@@ -68,6 +68,7 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 		fmt.Println("request err: ", err)
 		return []byte{}, err
 	}
+	req.Close = true
 	if Header != nil {
 		req.Header = Header
 	}
@@ -97,6 +98,7 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 		fmt.Println("req err: ", err)
 		return []byte{}, err
 	}
+	req.Close = true
 	if header != nil {
 		req.Header = header
 	}
@@ -211,10 +213,12 @@ func (rest *RestTemplate) Execute(url, method string, header http.Header, body, 
 	if rest.ClientConfig != nil && rest.ClientConfig.Authorization != "" {
 		header.Set("Authorization", rest.ClientConfig.Authorization)
 	}
+
 	buff, err := json.Marshal(body)
 	if err != nil {
 		return err
 	}
+
 	defer func() {
 		if err := recover(); err != nil {
 			log.Println(err)
