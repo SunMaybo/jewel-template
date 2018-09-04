@@ -17,6 +17,7 @@ type Template struct {
 	EnableReply bool
 	ReplyCount  int
 }
+
 type ClientConfig struct {
 	MaxIdleConns       int
 	IdleConnTimeout    time.Duration
@@ -42,6 +43,7 @@ func Default() *RestTemplate {
 		},
 	}
 }
+
 func Config(cfg ClientConfig) *RestTemplate {
 	tr := &http.Transport{
 		MaxIdleConns:       cfg.MaxIdleConns,
@@ -59,6 +61,7 @@ func Config(cfg ClientConfig) *RestTemplate {
 		ClientConfig: &cfg,
 	}
 }
+
 func (template *Template) Call(url string, param []byte, method string, Header http.Header) ([]byte, error) {
 	reader := bytes.NewReader(param)
 	var req *http.Request
@@ -95,7 +98,7 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		fmt.Println("req err: ", err)
+		fmt.Println("req err:", err)
 		return []byte{}, err
 	}
 	req.Close = true
@@ -205,6 +208,7 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	}
 	return nil
 }
+
 func (rest *RestTemplate) Execute(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error {
 	url = convertToUrl(url, uriVariables...)
 	if header == nil {
