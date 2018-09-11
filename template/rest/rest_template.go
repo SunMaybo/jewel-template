@@ -81,11 +81,11 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 		return []byte{}, err
 	}
 	BodyByte, err := ioutil.ReadAll(resp.Body)
-	resp.Body.Close()
 	if err != nil {
 		log.Println(err)
 		return []byte{}, err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
 		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "error", string(BodyByte)))
 	}
@@ -115,10 +115,10 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	}
 
 	BodyByte, err := ioutil.ReadAll(resp.Body)
-	resp.Body.Close()
 	if err != nil {
 		return []byte{}, err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
 		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "error", string(BodyByte)))
 	}
@@ -222,12 +222,6 @@ func (rest *RestTemplate) Execute(url, method string, header http.Header, body, 
 	if err != nil {
 		return err
 	}
-
-	defer func() {
-		if err := recover(); err != nil {
-			log.Println(err)
-		}
-	}()
 	if rest.EnableReply {
 		result, err := rest.CallWithReply(url, buff, method, header, 0)
 		if err != nil {
