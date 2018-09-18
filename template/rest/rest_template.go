@@ -34,7 +34,7 @@ func Default() *RestTemplate {
 		DisableCompression: true,
 	}
 	client := &http.Client{Transport: tr}
-	client.Timeout = 5 * time.Second
+	client.Timeout = 10 * time.Second
 	return &RestTemplate{
 		Template: Template{
 			Client:      client,
@@ -192,7 +192,6 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	if err != nil {
 		return err
 	}
-	fmt.Println(string(buff))
 	if rest.EnableReply {
 		result, err := rest.CallWithReply(url, buff, method, header, 0)
 		if err != nil {
