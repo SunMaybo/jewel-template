@@ -10,6 +10,7 @@ import (
 	"encoding/json"
 	"time"
 	"log"
+	"net/url"
 )
 
 type Template struct {
@@ -25,6 +26,7 @@ type ClientConfig struct {
 	SocketTimeout      time.Duration
 	Authorization      string
 	ReplyCount         int
+	Proxy              string
 }
 
 func Default() *RestTemplate {
@@ -38,18 +40,47 @@ func Default() *RestTemplate {
 	return &RestTemplate{
 		Template: Template{
 			Client:      client,
-			ReplyCount:  3,
+			EnableReply: true,
+		},
+	}
+}
+func DefaultProxy(proxy string) *RestTemplate {
+	u, _ := url.Parse(proxy)
+	tr := &http.Transport{
+		MaxIdleConns:       10,
+		IdleConnTimeout:    3 * time.Second,
+		DisableCompression: true,
+		Proxy:              http.ProxyURL(u),
+	}
+	client := &http.Client{Transport: tr}
+	client.Timeout = 10 * time.Second
+	return &RestTemplate{
+		Template: Template{
+			Client:      client,
 			EnableReply: true,
 		},
 	}
 }
 
 func Config(cfg ClientConfig) *RestTemplate {
-	tr := &http.Transport{
-		MaxIdleConns:       cfg.MaxIdleConns,
-		IdleConnTimeout:    cfg.IdleConnTimeout,
-		DisableCompression: cfg.DisableCompression,
+	var tr *http.Transport
+	if cfg.Proxy != "" {
+		u, _ := url.Parse(cfg.Proxy)
+		tr = &http.Transport{
+			MaxIdleConns:       cfg.MaxIdleConns,
+			IdleConnTimeout:    cfg.IdleConnTimeout,
+			DisableCompression: cfg.DisableCompression,
+			Proxy:              http.ProxyURL(u),
+		}
+
+	} else {
+		tr = &http.Transport{
+			MaxIdleConns:       cfg.MaxIdleConns,
+			IdleConnTimeout:    cfg.IdleConnTimeout,
+			DisableCompression: cfg.DisableCompression,
+		}
 	}
+
 	client := &http.Client{Transport: tr}
 	client.Timeout = cfg.SocketTimeout
 	return &RestTemplate{
