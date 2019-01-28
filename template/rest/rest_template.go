@@ -129,7 +129,6 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		fmt.Println("req err:", err)
 		return []byte{}, err
 	}
 	req.Close = true
@@ -139,7 +138,6 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	resp, err := template.Client.Do(req)
 	if err != nil && count < template.ReplyCount {
 		count++
-		log.Println(err)
 		return template.CallWithReply(url, param, method, header, count)
 	} else if err != nil && count >= template.ReplyCount {
 		return []byte{}, err
