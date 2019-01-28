@@ -99,7 +99,6 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		fmt.Println("request err: ", err)
 		return []byte{}, err
 	}
 	req.Close = true
