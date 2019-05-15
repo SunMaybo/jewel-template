@@ -4,15 +4,23 @@ import (
 	"bytes"
 	"io/ioutil"
 	"net/http"
-	"fmt"
-	"errors"
 	"regexp"
 	"encoding/json"
 	"time"
-	"log"
 	"net/url"
+	errors2 "jewel-template/template/errors"
 )
 
+type BaseTemplate interface {
+	GetForObject(url string, response interface{}, uriVariables ... string) error
+	PostForObject(url string, body, response interface{}, uriVariables ... string) error
+	PutForObject(url string, body, response interface{}, uriVariables ... string) error
+	DeleteForObject(url string, response interface{}, uriVariables ... string)
+	HeadForObject(url string, header http.Header, response interface{}, uriVariables ... string) error
+	ExecuteForJsonString(url, method string, header http.Header, body string, response interface{}, uriVariables ... string) error
+	ExecuteForObject(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error
+	Execute(url, method string, header http.Header, body, response interface{}, uriVariables ... string) error
+}
 type Template struct {
 	Client      *http.Client
 	EnableReply bool
@@ -93,13 +101,13 @@ func Config(cfg ClientConfig) *RestTemplate {
 	}
 }
 
-func (template *Template) Call(url string, param []byte, method string, Header http.Header) ([]byte, error) {
+func (template *Template) call(url string, param []byte, method string, Header http.Header) ([]byte, error) {
 	reader := bytes.NewReader(param)
 	var req *http.Request
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		return []byte{}, err
+		return []byte{}, errors2.New(3003,err.Error())
 	}
 	req.Close = true
 	if Header != nil {
@@ -107,28 +115,26 @@ func (template *Template) Call(url string, param []byte, method string, Header h
 	}
 	resp, err := template.Client.Do(req)
 	if err != nil {
-		log.Println(err)
-		return []byte{}, err
+		return []byte{}, errors2.New(3004,err.Error())
 	}
 	BodyByte, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Println(err)
-		return []byte{}, err
+		return []byte{}, errors2.New(3002,err.Error())
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
-		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "error", string(BodyByte)))
+		return BodyByte, errors2.New(resp.StatusCode,string(BodyByte))
 	}
 	return BodyByte, nil
 }
 
-func (template *Template) CallWithReply(url string, param []byte, method string, header http.Header, count int) ([]byte, error) {
+func (template *Template) callWithReply(url string, param []byte, method string, header http.Header, count int) ([]byte, error) {
 	reader := bytes.NewReader(param)
 	var req *http.Request
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		return []byte{}, err
+		return []byte{}, errors2.New(3003,err.Error())
 	}
 	req.Close = true
 	if header != nil {
@@ -137,18 +143,17 @@ func (template *Template) CallWithReply(url string, param []byte, method string,
 	resp, err := template.Client.Do(req)
 	if err != nil && count < template.ReplyCount {
 		count++
-		return template.CallWithReply(url, param, method, header, count)
+		return template.callWithReply(url, param, method, header, count)
 	} else if err != nil && count >= template.ReplyCount {
-		return []byte{}, err
+		return []byte{}, errors2.New(3004,err.Error())
 	}
-
 	BodyByte, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return []byte{}, err
+		return []byte{},  errors2.New(3002,err.Error())
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
-		return BodyByte, errors.New(fmt.Sprintf("%d-%s-%s", resp.StatusCode, "error", string(BodyByte)))
+		return BodyByte, errors2.New(resp.StatusCode,string(BodyByte))
 	}
 	return BodyByte, nil
 }
@@ -186,23 +191,22 @@ func (rest *RestTemplate) ExecuteForJsonString(url, method string, header http.H
 		header.Set("Authorization", rest.ClientConfig.Authorization)
 	}
 	buff := []byte(body)
-	defer func() {
-		if err := recover(); err != nil {
-			log.Println(err)
-		}
-	}()
+	var err error
 	if rest.EnableReply {
-		result, err := rest.CallWithReply(url, buff, method, header, 0)
+		result, err := rest.callWithReply(url, buff, method, header, 0)
 		if err != nil {
 			return err
 		}
-		json.Unmarshal(result, response)
+		err=json.Unmarshal(result, response)
 	} else {
-		result, err := rest.Call(url, buff, method, header)
+		result, err := rest.call(url, buff, method, header)
 		if err != nil {
 			return err
 		}
-		json.Unmarshal(result, response)
+		err=json.Unmarshal(result, response)
+	}
+	if err != nil {
+		return errors2.New(3001,err.Error())
 	}
 	return nil
 }
@@ -218,20 +222,23 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	}
 	buff, err := json.Marshal(body)
 	if err != nil {
-		return err
+		return errors2.New(3000,err.Error())
 	}
 	if rest.EnableReply {
-		result, err := rest.CallWithReply(url, buff, method, header, 0)
+		result, err := rest.callWithReply(url, buff, method, header, 0)
 		if err != nil {
 			return err
 		}
-		json.Unmarshal(result, response)
+		err=json.Unmarshal(result, response)
 	} else {
-		result, err := rest.Call(url, buff, method, header)
+		result, err := rest.call(url, buff, method, header)
 		if err != nil {
 			return err
 		}
-		json.Unmarshal(result, response)
+		err=json.Unmarshal(result, response)
+	}
+	if err != nil {
+		return errors2.New(3001,err.Error())
 	}
 	return nil
 }
@@ -247,20 +254,23 @@ func (rest *RestTemplate) Execute(url, method string, header http.Header, body, 
 
 	buff, err := json.Marshal(body)
 	if err != nil {
-		return err
+		return errors2.New(3000,err.Error())
 	}
 	if rest.EnableReply {
-		result, err := rest.CallWithReply(url, buff, method, header, 0)
+		result, err := rest.callWithReply(url, buff, method, header, 0)
 		if err != nil {
 			return err
 		}
-		json.Unmarshal(result, response)
+		err=json.Unmarshal(result, response)
 	} else {
-		result, err := rest.Call(url, buff, method, header)
+		result, err := rest.call(url, buff, method, header)
 		if err != nil {
 			return err
 		}
-		json.Unmarshal(result, response)
+		err=json.Unmarshal(result, response)
+	}
+	if err != nil {
+		return errors2.New(3001,err.Error())
 	}
 	return nil
 }
