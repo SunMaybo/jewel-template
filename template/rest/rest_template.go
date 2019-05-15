@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"time"
 	"net/url"
-	errors2 "jewel-template/template/errors"
+	errors2 "github.com/SunMaybo/jewel-template/template/errors"
 )
 
 type BaseTemplate interface {
