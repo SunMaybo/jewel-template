@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba64ccf0-db36-4330-b476-0800f0fb4b56" name="Default" comment="" />
+    <list default="true" id="ba64ccf0-db36-4330-b476-0800f0fb4b56" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="jsonrpc.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jsonrpc.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="832">
-              <caret line="41" column="31" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+            <state relative-caret-position="553">
+              <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
               <folding>
                 <element signature="e#385#549#0" expanded="false" />
               </folding>
@@ -23,17 +25,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rest_template.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rest_template.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-70">
-              <caret line="236" column="5" lean-forward="false" selection-start-line="236" selection-start-column="5" selection-end-line="236" selection-end-column="5" />
+            <state relative-caret-position="7332">
+              <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
               <folding>
-                <element signature="e#14#117#0" expanded="true" />
+                <element signature="e#14#128#0" expanded="true" />
                 <element signature="n#!!block;n#PostForObject#0" expanded="false" />
                 <element signature="n#!!block;n#PutForObject#0" expanded="false" />
                 <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
                 <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+              <folding>
+                <element signature="e#14#66#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,7 +106,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-241" />
     <option name="y" value="-1057" />
     <option name="width" value="1920" />
@@ -113,7 +127,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -122,21 +135,11 @@
               <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
               <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jewel-template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jewel-template" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,18 +299,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-241" y="-1080" width="1920" height="1080" extended-state="0" />
+    <frame x="-241" y="-1057" width="1920" height="1057" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25825346" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16347177" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43711966" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49344096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.089852005" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36308315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -330,11 +333,6 @@
           <url>file://$PROJECT_DIR$/template/jsonrpc/jsonrpc_test.go</url>
           <line>10</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/template/rest/template_test.go</url>
-          <line>15</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="12" />
@@ -368,7 +366,7 @@
         <state relative-caret-position="3250">
           <caret line="138" column="27" lean-forward="false" selection-start-line="138" selection-start-column="27" selection-end-line="138" selection-end-column="27" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -391,7 +389,7 @@
         <state relative-caret-position="3406">
           <caret line="144" column="18" lean-forward="false" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -432,7 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -451,7 +448,7 @@
         <state relative-caret-position="3013">
           <caret line="144" column="18" lean-forward="false" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -482,7 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -501,7 +497,7 @@
         <state relative-caret-position="3406">
           <caret line="144" column="18" lean-forward="false" selection-start-line="144" selection-start-column="18" selection-end-line="144" selection-end-column="18" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -532,7 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,7 +546,7 @@
         <state relative-caret-position="3042">
           <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -582,7 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +595,7 @@
         <state relative-caret-position="104">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="13" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -632,7 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -641,7 +634,7 @@
         <state relative-caret-position="2704">
           <caret line="127" column="27" lean-forward="true" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="27" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
@@ -679,32 +672,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#66#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="780">
             <caret line="30" column="3" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
-            <folding />
           </first_editor>
           <second_editor>
             <markdownNavigatorState />
           </second_editor>
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -716,26 +697,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+    <entry file="file://$PROJECT_DIR$/template/rest/template_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="41" column="31" lean-forward="false" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        <state relative-caret-position="208">
+          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
-            <element signature="e#385#549#0" expanded="false" />
+            <element signature="e#14#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/rest/rest_template.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="236" column="5" lean-forward="false" selection-start-line="236" selection-start-column="5" selection-end-line="236" selection-end-column="5" />
+        <state relative-caret-position="7332">
+          <caret line="293" column="0" lean-forward="false" selection-start-line="293" selection-start-column="0" selection-end-line="293" selection-end-column="0" />
           <folding>
-            <element signature="e#14#117#0" expanded="true" />
+            <element signature="e#14#128#0" expanded="true" />
             <element signature="n#!!block;n#PostForObject#0" expanded="false" />
             <element signature="n#!!block;n#PutForObject#0" expanded="false" />
             <element signature="n#!!block;n#DeleteForObject#0" expanded="false" />
             <element signature="n#!!block;n#HeadForObject#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/jsonrpc/jsonrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+          <folding>
+            <element signature="e#385#549#0" expanded="false" />
           </folding>
         </state>
       </provider>
