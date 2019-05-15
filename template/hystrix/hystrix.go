@@ -20,14 +20,14 @@ type Hystrix struct {
 	//Timeout                time.Duration `yaml:"timeout"`
 	//IsAlerting             bool   `yaml:"is_alerting"`
 }
-
+type HystrixTable map[string]Hystrix
 type Service struct {
-	Schema          string             `yaml:"schema"` //http or https and default http
-	Name            string             `yaml:"name"`
-	Host            string             `yaml:"host"`
-	ClientConfig    RestConfig         `yaml:"rest"`
-	HystrixMap      map[string]Hystrix `yaml:"hystrix"`
-	HystrixEnabled  bool               `yaml:"hystrix_enabled"`
+	Schema          string       `yaml:"schema"` //http or https and default http
+	Name            string       `yaml:"name"`
+	Host            string       `yaml:"host"`
+	ClientConfig    *RestConfig  `yaml:"rest"`
+	HystrixTable    HystrixTable `yaml:"hystrix"`
+	HystrixEnabled  bool         `yaml:"hystrix_enabled"`
 	hystrixTemplate *HystrixTemplate
 }
 type RestConfig struct {
@@ -52,16 +52,21 @@ func New(service Service) (*HystrixTemplate) {
 	ht := HystrixTemplate{
 		service: service,
 	}
-	ht.rest = rest.Config(rest.ClientConfig{
-		MaxIdleConns:       service.ClientConfig.MaxIdleConns,
-		IdleConnTimeout:    service.ClientConfig.IdleConnTimeout,
-		DisableCompression: service.ClientConfig.DisableCompression,
-		SocketTimeout:      service.ClientConfig.SocketTimeout,
-		Authorization:      service.ClientConfig.Authorization,
-		ReplyCount:         service.ClientConfig.ReplyCount,
-		Proxy:              service.ClientConfig.Proxy,
-	})
-	for name, htx := range service.HystrixMap {
+	if service.ClientConfig != nil {
+		ht.rest = rest.Config(rest.ClientConfig{
+			MaxIdleConns:       service.ClientConfig.MaxIdleConns,
+			IdleConnTimeout:    service.ClientConfig.IdleConnTimeout,
+			DisableCompression: service.ClientConfig.DisableCompression,
+			SocketTimeout:      service.ClientConfig.SocketTimeout,
+			Authorization:      service.ClientConfig.Authorization,
+			ReplyCount:         service.ClientConfig.ReplyCount,
+			Proxy:              service.ClientConfig.Proxy,
+		})
+	} else {
+		ht.rest = rest.Default()
+	}
+
+	for name, htx := range service.HystrixTable {
 		htx.Name = name
 		hystrix.ConfigureCommand(name, hystrix.CommandConfig{
 			RequestVolumeThreshold: htx.RequestVolumeThreshold,
@@ -166,7 +171,7 @@ func (t *HystrixTemplate) Execute(name, method string, header http.Header, body,
 	}
 }
 func (t *HystrixTemplate) getUrl(name string) (string, *errors.HttpError) {
-	if hystrix, ok := t.service.HystrixMap[name]; ok {
+	if hystrix, ok := t.service.HystrixTable[name]; ok {
 		return t.service.Schema + "://" + t.service.Host + hystrix.Path, nil
 	}
 	return "", errors.New(30006, "path is required").(*errors.HttpError)
