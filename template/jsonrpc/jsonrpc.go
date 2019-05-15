@@ -26,6 +26,7 @@ type Client struct {
 	Url      string
 	template rest.RestTemplate
 }
+
 func Config(cfg rest.ClientConfig, url string) *Client {
 	tr := &http.Transport{
 		MaxIdleConns:       cfg.MaxIdleConns,
