@@ -29,7 +29,7 @@ func init() {
 }
 
 func TestHystrix(t *testing.T) {
-	template := factory.Service("storage_service")
+	template := factory.Service("storage_service", nil)
 	dataMap := make(map[string]interface{})
 	err := template.GetForObject("images", &dataMap, "a2ea2f3b771311e98f13a580af40044")
 	if err != nil {
@@ -42,9 +42,8 @@ func TestResponseHystrix(t *testing.T) {
 	template := factory.Service("storage_service")
 	dataMap := make(map[string]interface{})
 	err := template.ExecuteWithCustomHystrix("images", "GET", nil, nil, &dataMap, func(response interface{}) error {
-		data:=response.(*map[string]interface{})
-		if (*data)["code"]==0 {
-			fmt.Println(response)
+		data := response.(*map[string]interface{})
+		if (*data)["status"] == "FINISHED" {
 			return errors.New("errr")
 		}
 

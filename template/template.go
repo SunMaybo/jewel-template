@@ -20,7 +20,7 @@ type JewelTemplateFactory struct {
 func New(config Config) JewelTemplateFactory {
 	return JewelTemplateFactory{config: config}
 }
-func (jtf JewelTemplateFactory) Service(name string) *hystrix.HystrixTemplate {
+func (jtf JewelTemplateFactory) Service(name string,hystrixFunc func(name string, isOpen bool)) *hystrix.HystrixTemplate {
 	if service, ok := jtf.config.JewelTemplate.Template.ServiceBucket[name]; ok {
 		return hystrix.New(service)
 	}

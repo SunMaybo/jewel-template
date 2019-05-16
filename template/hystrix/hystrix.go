@@ -45,7 +45,7 @@ type HystrixTemplate struct {
 	service Service
 }
 
-func New(service Service) (*HystrixTemplate) {
+func New(service Service, hystrixFunc func(name string, isOpen bool)) (*HystrixTemplate) {
 	if service.Schema == "" {
 		service.Schema = "http"
 	}
@@ -73,6 +73,7 @@ func New(service Service) (*HystrixTemplate) {
 			ErrorPercentThreshold:  htx.ErrorPercentThreshold,
 			RequestWindowsTime:     htx.RequestWindowsTime,
 			Timeout:                60000,
+			AlertFunc:              hystrixFunc,
 		})
 	}
 	return &ht
