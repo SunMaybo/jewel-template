@@ -13,16 +13,19 @@ type JewelTemplate struct {
 type Config struct {
 	JewelTemplate JewelTemplate `yaml:"jewel"`
 }
+type HystrixFunc func(name string, isOpen bool)
+
 type JewelTemplateFactory struct {
-	config Config
+	config      Config
+	hystrixFunc HystrixFunc
 }
 
-func New(config Config) JewelTemplateFactory {
-	return JewelTemplateFactory{config: config}
+func New(config Config, hystrixFunc HystrixFunc) JewelTemplateFactory {
+	return JewelTemplateFactory{config: config, hystrixFunc: hystrixFunc}
 }
-func (jtf JewelTemplateFactory) Service(name string,hystrixFunc func(name string, isOpen bool)) *hystrix.HystrixTemplate {
+func (jtf JewelTemplateFactory) Service(name string) *hystrix.HystrixTemplate {
 	if service, ok := jtf.config.JewelTemplate.Template.ServiceBucket[name]; ok {
-		return hystrix.New(service)
+		return hystrix.New(service, jtf.hystrixFunc)
 	}
 	return nil
 }
