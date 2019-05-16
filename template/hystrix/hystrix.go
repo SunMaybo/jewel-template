@@ -104,21 +104,18 @@ func (t *HystrixTemplate) ExecuteForJsonString(name, method string, header http.
 	if !t.service.HystrixEnabled {
 		return t.rest.ExecuteForJsonString(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
-	output := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.ExecuteForJsonString(url, method, header, body, response, uriVariables...)
-		if err == nil {
-			output <- true
-		}
 		return err
 	}, func(e error) error {
 		return e
 	})
 	select {
-	case <-output:
-		return nil
 	case err := <-errorChan:
-		return errors.New(3005, err.Error()).(*errors.HttpError)
+		if err != nil {
+			return errors.New(3005, err.Error()).(*errors.HttpError)
+		}
+		return nil
 	}
 }
 func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Header, body, response interface{}, uriVariables ... string) *errors.HttpError {
@@ -129,21 +126,18 @@ func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Head
 	if !t.service.HystrixEnabled {
 		return t.rest.ExecuteForObject(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
-	output := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.ExecuteForObject(url, method, header, body, response, uriVariables...)
-		if err == nil {
-			output <- true
-		}
 		return err
 	}, func(e error) error {
 		return e
 	})
 	select {
-	case <-output:
-		return nil
 	case err := <-errorChan:
-		return errors.New(3005, err.Error()).(*errors.HttpError)
+		if err != nil {
+			return errors.New(3005, err.Error()).(*errors.HttpError)
+		}
+		return nil
 	}
 }
 func (t *HystrixTemplate) Execute(name, method string, header http.Header, body, response interface{}, uriVariables ... string) *errors.HttpError {
@@ -154,21 +148,18 @@ func (t *HystrixTemplate) Execute(name, method string, header http.Header, body,
 	if !t.service.HystrixEnabled {
 		return t.rest.Execute(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
-	output := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.Execute(url, method, header, body, response, uriVariables...)
-		if err == nil {
-			output <- true
-		}
 		return err
 	}, func(e error) error {
 		return e
 	})
 	select {
-	case <-output:
-		return nil
 	case err := <-errorChan:
-		return errors.New(3005, err.Error()).(*errors.HttpError)
+		if err != nil {
+			return errors.New(3005, err.Error()).(*errors.HttpError)
+		}
+		return nil
 	}
 }
 func (t *HystrixTemplate) getUrl(name string) (string, *errors.HttpError) {

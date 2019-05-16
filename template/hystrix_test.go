@@ -32,7 +32,8 @@ func TestHystrix(t *testing.T) {
 	dataMap := make(map[string]interface{})
 	err := template.GetForObject("images", &dataMap, "a2ea2f3b771311e98f13a580af40044")
 	if err != nil {
-		log.Fatal(err.Error())
+		fmt.Println(err.Status)
+		log.Fatal(err)
 	}
 	fmt.Println(dataMap)
 }
