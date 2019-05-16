@@ -104,17 +104,20 @@ func (t *HystrixTemplate) ExecuteForJsonString(name, method string, header http.
 	if !t.service.HystrixEnabled {
 		return t.rest.ExecuteForJsonString(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
+	okChan := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.ExecuteForJsonString(url, method, header, body, response, uriVariables...)
+		if err == nil {
+			okChan <- true
+		}
 		return err
 	}, func(e error) error {
 		return e
 	})
 	select {
 	case err := <-errorChan:
-		if err != nil {
-			return errors.New(3005, err.Error()).(*errors.HttpError)
-		}
+		return errors.New(3005, err.Error()).(*errors.HttpError)
+	case <-okChan:
 		return nil
 	}
 }
@@ -126,17 +129,20 @@ func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Head
 	if !t.service.HystrixEnabled {
 		return t.rest.ExecuteForObject(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
+	okChan := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.ExecuteForObject(url, method, header, body, response, uriVariables...)
+		if err == nil {
+			okChan <- true
+		}
 		return err
 	}, func(e error) error {
 		return e
 	})
 	select {
 	case err := <-errorChan:
-		if err != nil {
-			return errors.New(3005, err.Error()).(*errors.HttpError)
-		}
+		return errors.New(3005, err.Error()).(*errors.HttpError)
+	case <-okChan:
 		return nil
 	}
 }
@@ -148,17 +154,20 @@ func (t *HystrixTemplate) Execute(name, method string, header http.Header, body,
 	if !t.service.HystrixEnabled {
 		return t.rest.Execute(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
+	okChan := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.Execute(url, method, header, body, response, uriVariables...)
+		if err == nil {
+			okChan <- true
+		}
 		return err
 	}, func(e error) error {
 		return e
 	})
 	select {
 	case err := <-errorChan:
-		if err != nil {
-			return errors.New(3005, err.Error()).(*errors.HttpError)
-		}
+		return errors.New(3005, err.Error()).(*errors.HttpError)
+	case <-okChan:
 		return nil
 	}
 }
@@ -170,20 +179,25 @@ func (t *HystrixTemplate) ExecuteWithCustomHystrix(name, method string, header h
 	if !t.service.HystrixEnabled {
 		return t.rest.Execute(url, method, header, body, response, uriVariables...).(*errors.HttpError)
 	}
+	okChan := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.Execute(url, method, header, body, response, uriVariables...)
 		if responseCutBrokenFunc != nil && err == nil {
-			return responseCutBrokenFunc(response)
+			err = responseCutBrokenFunc(response)
+		}
+		if err == nil {
+			okChan <- true
 		}
 		return err
+
 	}, func(e error) error {
 		return e
 	})
 	select {
 	case err := <-errorChan:
-		if err != nil {
-			return errors.New(3005, err.Error()).(*errors.HttpError)
-		}
+		return errors.New(3005, err.Error()).(*errors.HttpError)
+
+	case <-okChan:
 		return nil
 	}
 }

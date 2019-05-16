@@ -5,7 +5,7 @@ import (
 	"github.com/SunMaybo/jewel-template/template/hystrix"
 	"github.com/bdlm/log"
 	"fmt"
-	"github.com/SunMaybo/jewel-template/template/errors"
+	"errors"
 )
 
 var factory JewelTemplateFactory
@@ -31,10 +31,27 @@ func init() {
 func TestHystrix(t *testing.T) {
 	template := factory.Service("storage_service")
 	dataMap := make(map[string]interface{})
-	err := template.GetForObject("images", &dataMap,"a2ea2f3b771311e98f13a580af40044")
+	err := template.GetForObject("images", &dataMap, "a2ea2f3b771311e98f13a580af40044")
 	if err != nil {
 		fmt.Println(err.Status)
 		log.Fatal(err)
 	}
 	fmt.Println(dataMap)
+}
+func TestResponseHystrix(t *testing.T) {
+	template := factory.Service("storage_service")
+	dataMap := make(map[string]interface{})
+	err := template.ExecuteWithCustomHystrix("images", "GET", nil, nil, &dataMap, func(response interface{}) error {
+		data:=response.(*map[string]interface{})
+		if (*data)["code"]==0 {
+			fmt.Println(response)
+			return errors.New("errr")
+		}
+
+		return nil
+	}, "a2ea2f3b771311e98f130a580af40044")
+	if err != nil {
+		fmt.Println(err.Status)
+		log.Fatal(err)
+	}
 }
