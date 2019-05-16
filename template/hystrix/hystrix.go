@@ -78,25 +78,25 @@ func New(service Service) (*HystrixTemplate) {
 	return &ht
 }
 
-func (t *HystrixTemplate) GetForObject(name string, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
-	return t.ExecuteForObject(name, http.MethodGet, nil, nil, response, statusHystrixFunc, uriVariables...)
+func (t *HystrixTemplate) GetForObject(name string, response interface{}, uriVariables ... string) *errors.HttpError {
+	return t.ExecuteForObject(name, http.MethodGet, nil, nil, response, uriVariables...)
 }
-func (t *HystrixTemplate) PostForObject(name string, body, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
-	return t.ExecuteForObject(name, http.MethodPost, nil, body, response, statusHystrixFunc, uriVariables...)
+func (t *HystrixTemplate) PostForObject(name string, body, response interface{}, uriVariables ... string) *errors.HttpError {
+	return t.ExecuteForObject(name, http.MethodPost, nil, body, response, uriVariables...)
 }
-func (t *HystrixTemplate) PutForObject(name string, body, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
+func (t *HystrixTemplate) PutForObject(name string, body, response interface{}, uriVariables ... string) *errors.HttpError {
 
-	return t.ExecuteForObject(name, http.MethodPut, nil, body, response, statusHystrixFunc, uriVariables...)
+	return t.ExecuteForObject(name, http.MethodPut, nil, body, response, uriVariables...)
 }
-func (t *HystrixTemplate) DeleteForObject(name string, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
+func (t *HystrixTemplate) DeleteForObject(name string, response interface{}, uriVariables ... string) *errors.HttpError {
 
-	return t.ExecuteForObject(name, http.MethodDelete, nil, nil, response, statusHystrixFunc, uriVariables...)
+	return t.ExecuteForObject(name, http.MethodDelete, nil, nil, response, uriVariables...)
 }
-func (t *HystrixTemplate) HeadForObject(name string, header http.Header, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
+func (t *HystrixTemplate) HeadForObject(name string, header http.Header, response interface{}, uriVariables ... string) *errors.HttpError {
 
-	return t.ExecuteForObject(name, http.MethodHead, header, nil, response, statusHystrixFunc, uriVariables...)
+	return t.ExecuteForObject(name, http.MethodHead, header, nil, response, uriVariables...)
 }
-func (t *HystrixTemplate) ExecuteForJsonString(name, method string, header http.Header, body string, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
+func (t *HystrixTemplate) ExecuteForJsonString(name, method string, header http.Header, body string, response interface{}, uriVariables ... string) *errors.HttpError {
 	url, err := t.getUrl(name)
 	if err != nil {
 		return err
@@ -106,9 +106,6 @@ func (t *HystrixTemplate) ExecuteForJsonString(name, method string, header http.
 	}
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.ExecuteForJsonString(url, method, header, body, response, uriVariables...)
-		if statusHystrixFunc != nil {
-			return statusHystrixFunc(err.(*errors.HttpError))
-		}
 		return err
 	}, func(e error) error {
 		return e
@@ -121,7 +118,7 @@ func (t *HystrixTemplate) ExecuteForJsonString(name, method string, header http.
 		return nil
 	}
 }
-func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Header, body, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
+func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Header, body, response interface{}, uriVariables ... string) *errors.HttpError {
 	url, err := t.getUrl(name)
 	if err != nil {
 		return err
@@ -131,9 +128,6 @@ func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Head
 	}
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.ExecuteForObject(url, method, header, body, response, uriVariables...)
-		if statusHystrixFunc != nil {
-			return statusHystrixFunc(err.(*errors.HttpError))
-		}
 		return err
 	}, func(e error) error {
 		return e
@@ -146,7 +140,7 @@ func (t *HystrixTemplate) ExecuteForObject(name, method string, header http.Head
 		return nil
 	}
 }
-func (t *HystrixTemplate) Execute(name, method string, header http.Header, body, response interface{}, statusHystrixFunc func(*errors.HttpError) error, uriVariables ... string) *errors.HttpError {
+func (t *HystrixTemplate) Execute(name, method string, header http.Header, body, response interface{}, uriVariables ... string) *errors.HttpError {
 	url, err := t.getUrl(name)
 	if err != nil {
 		return err
@@ -156,8 +150,30 @@ func (t *HystrixTemplate) Execute(name, method string, header http.Header, body,
 	}
 	errorChan := hystrix.Go(name, func() error {
 		err := t.rest.Execute(url, method, header, body, response, uriVariables...)
-		if statusHystrixFunc != nil {
-			return statusHystrixFunc(err.(*errors.HttpError))
+		return err
+	}, func(e error) error {
+		return e
+	})
+	select {
+	case err := <-errorChan:
+		if err != nil {
+			return errors.New(3005, err.Error()).(*errors.HttpError)
+		}
+		return nil
+	}
+}
+func (t *HystrixTemplate) ExecuteWithCustomHystrix(name, method string, header http.Header, body, response interface{}, responseCutBrokenFunc func(response interface{}) error, uriVariables ... string) *errors.HttpError {
+	url, err := t.getUrl(name)
+	if err != nil {
+		return err
+	}
+	if !t.service.HystrixEnabled {
+		return t.rest.Execute(url, method, header, body, response, uriVariables...).(*errors.HttpError)
+	}
+	errorChan := hystrix.Go(name, func() error {
+		err := t.rest.Execute(url, method, header, body, response, uriVariables...)
+		if responseCutBrokenFunc != nil && err == nil {
+			return responseCutBrokenFunc(response)
 		}
 		return err
 	}, func(e error) error {
