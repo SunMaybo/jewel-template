@@ -28,12 +28,11 @@ func init() {
 }
 
 func TestHystrix(t *testing.T) {
-
 	template := factory.Service("storage_service")
 	dataMap := make(map[string]interface{})
-	err := template.GetForObject("images", dataMap, "65986c1d770c11e9a7cb0a580af4007a")
+	err := template.GetForObject("images", &dataMap, "a2ea2f3b771311e98f13a580af40044")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 	fmt.Println(dataMap)
 }

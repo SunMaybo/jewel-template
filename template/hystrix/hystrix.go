@@ -72,6 +72,7 @@ func New(service Service) (*HystrixTemplate) {
 			RequestVolumeThreshold: htx.RequestVolumeThreshold,
 			ErrorPercentThreshold:  htx.ErrorPercentThreshold,
 			RequestWindowsTime:     htx.RequestWindowsTime,
+			Timeout:                60000,
 		})
 	}
 	return &ht

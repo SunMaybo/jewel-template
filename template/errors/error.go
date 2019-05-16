@@ -1,18 +1,18 @@
 package errors
 
+import "fmt"
+
 type HttpError struct {
-	Code int
+	Status int
 	Message string
 }
 
 func (e HttpError)Error() string {
-	return e.Message
+	 return fmt.Sprintf(`{"status":%d,"message":"%s"}`, e.Status, e.Message)
 }
 func New(code int,text string) error {
-	return &HttpError{Code:code,Message:text}
+	return &HttpError{Status:code,Message:text}
 }
-
-
 
 
 
