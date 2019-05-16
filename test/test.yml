@@ -1,0 +1,45 @@
+jewel:
+   template:
+       service:
+         images_service:
+             schema: https
+             host: www.baidu.com
+             hystrix_enabled: true
+             rest:
+               max_idle_conns: 5
+               max_idle_timeout: 3000
+               disable_compression: true
+               socket_timeout: 3000
+               reply_count: 3
+               proxy: http://127.0.0.1:1087
+             hystrix:
+                 links:
+                   path: /links
+                   request_volume_threshold: 3
+                   error_percent_threshold: 25
+                   request_windows_time: 10
+                 test:
+                   path: /test
+                   request_volume_threshold: 3
+                   error_percent_threshold: 25
+                   request_windows_time: 10
+         article_service:
+                      schema: http
+                      host: 192.168.1.100:31002
+                      hystrix_enabled: true
+                      rest:
+                        max_idle_conns: 5
+                        max_idle_timeout: 3000
+                        socket_timeout: 3000
+                        reply_count: 3
+                      hystrix:
+                          links:
+                            path: /api/tasks/:id
+                            request_volume_threshold: 3
+                            error_percent_threshold: 25
+                            request_windows_time: 10
+                          test:
+                            path: /test
+                            request_volume_threshold: 3
+                            error_percent_threshold: 25
+                            request_windows_time: 10

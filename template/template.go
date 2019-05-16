@@ -4,7 +4,7 @@ import "github.com/SunMaybo/jewel-template/template/hystrix"
 
 type ServiceBucket map[string]hystrix.Service
 type Template struct {
-	ServiceBucket ServiceBucket `yaml:"Service"`
+	ServiceBucket ServiceBucket `yaml:"service"`
 }
 type JewelTemplate struct {
 	Template Template `yaml:"template"`

@@ -44,11 +44,12 @@ func Default() *RestTemplate {
 		DisableCompression: true,
 	}
 	client := &http.Client{Transport: tr}
-	client.Timeout = 10 * time.Second
+	client.Timeout = 5 * time.Second
 	return &RestTemplate{
 		Template: Template{
 			Client:      client,
 			EnableReply: true,
+			ReplyCount:  3,
 		},
 	}
 }
@@ -61,22 +62,29 @@ func DefaultProxy(proxy string) *RestTemplate {
 		Proxy:              http.ProxyURL(u),
 	}
 	client := &http.Client{Transport: tr}
-	client.Timeout = 10 * time.Second
+	client.Timeout = 5 * time.Second
 	return &RestTemplate{
 		Template: Template{
 			Client:      client,
 			EnableReply: true,
+			ReplyCount:  3,
 		},
 	}
 }
 
 func Config(cfg ClientConfig) *RestTemplate {
 	var tr *http.Transport
+	if cfg.IdleConnTimeout <= 0 {
+		cfg.IdleConnTimeout = 3000
+	}
+	if cfg.SocketTimeout <= 0 {
+		cfg.SocketTimeout = 5000
+	}
 	if cfg.Proxy != "" {
 		u, _ := url.Parse(cfg.Proxy)
 		tr = &http.Transport{
 			MaxIdleConns:       cfg.MaxIdleConns,
-			IdleConnTimeout:    cfg.IdleConnTimeout,
+			IdleConnTimeout:    cfg.IdleConnTimeout * time.Millisecond,
 			DisableCompression: cfg.DisableCompression,
 			Proxy:              http.ProxyURL(u),
 		}
@@ -84,13 +92,13 @@ func Config(cfg ClientConfig) *RestTemplate {
 	} else {
 		tr = &http.Transport{
 			MaxIdleConns:       cfg.MaxIdleConns,
-			IdleConnTimeout:    cfg.IdleConnTimeout,
+			IdleConnTimeout:    cfg.IdleConnTimeout * time.Millisecond,
 			DisableCompression: cfg.DisableCompression,
 		}
 	}
 
 	client := &http.Client{Transport: tr}
-	client.Timeout = cfg.SocketTimeout
+	client.Timeout = cfg.SocketTimeout * time.Millisecond
 	return &RestTemplate{
 		Template: Template{
 			Client:      client,
@@ -107,7 +115,7 @@ func (template *Template) call(url string, param []byte, method string, Header h
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		return []byte{}, errors2.New(3003,err.Error())
+		return []byte{}, errors2.New(3003, err.Error())
 	}
 	req.Close = true
 	if Header != nil {
@@ -115,15 +123,15 @@ func (template *Template) call(url string, param []byte, method string, Header h
 	}
 	resp, err := template.Client.Do(req)
 	if err != nil {
-		return []byte{}, errors2.New(3004,err.Error())
+		return []byte{}, errors2.New(3004, err.Error())
 	}
 	BodyByte, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return []byte{}, errors2.New(3002,err.Error())
+		return []byte{}, errors2.New(3002, err.Error())
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
-		return BodyByte, errors2.New(resp.StatusCode,string(BodyByte))
+		return BodyByte, errors2.New(resp.StatusCode, string(BodyByte))
 	}
 	return BodyByte, nil
 }
@@ -134,7 +142,7 @@ func (template *Template) callWithReply(url string, param []byte, method string,
 	var err error
 	req, err = http.NewRequest(method, url, reader)
 	if err != nil {
-		return []byte{}, errors2.New(3003,err.Error())
+		return []byte{}, errors2.New(3003, err.Error())
 	}
 	req.Close = true
 	if header != nil {
@@ -145,15 +153,15 @@ func (template *Template) callWithReply(url string, param []byte, method string,
 		count++
 		return template.callWithReply(url, param, method, header, count)
 	} else if err != nil && count >= template.ReplyCount {
-		return []byte{}, errors2.New(3004,err.Error())
+		return []byte{}, errors2.New(3004, err.Error())
 	}
 	BodyByte, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return []byte{},  errors2.New(3002,err.Error())
+		return []byte{}, errors2.New(3002, err.Error())
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
-		return BodyByte, errors2.New(resp.StatusCode,string(BodyByte))
+		return BodyByte, errors2.New(resp.StatusCode, string(BodyByte))
 	}
 	return BodyByte, nil
 }
@@ -197,16 +205,16 @@ func (rest *RestTemplate) ExecuteForJsonString(url, method string, header http.H
 		if err != nil {
 			return err
 		}
-		err=json.Unmarshal(result, response)
+		err = json.Unmarshal(result, response)
 	} else {
 		result, err := rest.call(url, buff, method, header)
 		if err != nil {
 			return err
 		}
-		err=json.Unmarshal(result, response)
+		err = json.Unmarshal(result, response)
 	}
 	if err != nil {
-		return errors2.New(3001,err.Error())
+		return errors2.New(3001, err.Error())
 	}
 	return nil
 }
@@ -222,23 +230,23 @@ func (rest *RestTemplate) ExecuteForObject(url, method string, header http.Heade
 	}
 	buff, err := json.Marshal(body)
 	if err != nil {
-		return errors2.New(3000,err.Error())
+		return errors2.New(3000, err.Error())
 	}
 	if rest.EnableReply {
 		result, err := rest.callWithReply(url, buff, method, header, 0)
 		if err != nil {
 			return err
 		}
-		err=json.Unmarshal(result, response)
+		err = json.Unmarshal(result, response)
 	} else {
 		result, err := rest.call(url, buff, method, header)
 		if err != nil {
 			return err
 		}
-		err=json.Unmarshal(result, response)
+		err = json.Unmarshal(result, response)
 	}
 	if err != nil {
-		return errors2.New(3001,err.Error())
+		return errors2.New(3001, err.Error())
 	}
 	return nil
 }
@@ -254,23 +262,23 @@ func (rest *RestTemplate) Execute(url, method string, header http.Header, body, 
 
 	buff, err := json.Marshal(body)
 	if err != nil {
-		return errors2.New(3000,err.Error())
+		return errors2.New(3000, err.Error())
 	}
 	if rest.EnableReply {
 		result, err := rest.callWithReply(url, buff, method, header, 0)
 		if err != nil {
 			return err
 		}
-		err=json.Unmarshal(result, response)
+		err = json.Unmarshal(result, response)
 	} else {
 		result, err := rest.call(url, buff, method, header)
 		if err != nil {
 			return err
 		}
-		err=json.Unmarshal(result, response)
+		err = json.Unmarshal(result, response)
 	}
 	if err != nil {
-		return errors2.New(3001,err.Error())
+		return errors2.New(3001, err.Error())
 	}
 	return nil
 }
