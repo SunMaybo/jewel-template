@@ -1,11 +1,11 @@
 package hystrix
 
 import (
-	"time"
 	"net/http"
 	"github.com/SunMaybo/jewel-template/template/rest"
 	"github.com/SunMaybo/jewel-template/template/errors"
 	"github.com/SunMaybo/hystrix-go/hystrix"
+	"time"
 )
 
 //熔断配置
@@ -31,13 +31,13 @@ type Service struct {
 	hystrixTemplate *HystrixTemplate
 }
 type RestConfig struct {
-	MaxIdleConns       int           `yaml:"max_idle_conns"`
-	IdleConnTimeout    time.Duration `yaml:"max_idle_timeout"`
-	DisableCompression bool          `yaml:"disable_compression"`
-	SocketTimeout      time.Duration `yaml:"socket_timeout"`
-	Authorization      string        `yaml:"authorization"`
-	ReplyCount         int           `yaml:"reply_count"`
-	Proxy              string        `yaml:"proxy"`
+	MaxIdleConns       int    `yaml:"max_idle_conns"`
+	IdleConnTimeout    int    `yaml:"idle_conn_timeout"`
+	DisableCompression bool   `yaml:"disable_compression"`
+	SocketTimeout      int    `yaml:"socket_timeout"`
+	Authorization      string `yaml:"authorization"`
+	ReplyCount         int    `yaml:"reply_count"`
+	Proxy              string `yaml:"proxy"`
 }
 
 type HystrixTemplate struct {
@@ -55,9 +55,9 @@ func New(service Service, hystrixFunc func(name string, isOpen bool)) (*HystrixT
 	if service.ClientConfig != nil {
 		ht.rest = rest.Config(rest.ClientConfig{
 			MaxIdleConns:       service.ClientConfig.MaxIdleConns,
-			IdleConnTimeout:    service.ClientConfig.IdleConnTimeout,
+			IdleConnTimeout:    time.Millisecond * time.Duration(service.ClientConfig.IdleConnTimeout),
 			DisableCompression: service.ClientConfig.DisableCompression,
-			SocketTimeout:      service.ClientConfig.SocketTimeout,
+			SocketTimeout:      time.Millisecond * time.Duration(service.ClientConfig.SocketTimeout),
 			Authorization:      service.ClientConfig.Authorization,
 			ReplyCount:         service.ClientConfig.ReplyCount,
 			Proxy:              service.ClientConfig.Proxy,

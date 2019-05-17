@@ -1,0 +1,22 @@
+  service:
+     schema: https
+     host: www.baidu.com
+     hystrix_enabled: true
+     rest:
+       max_idle_conns: 5
+       idle_conn_timeout: 3000
+       disable_compression: true
+       socket_timeout: 3000
+       reply_count: 3
+       proxy: http://127.0.0.1:1087
+     hystrix:
+         links:
+           path: /links
+           request_volume_threshold: 3
+           error_percent_threshold: 25
+           request_windows_time: 10
+         test:
+           path: /test
+           request_volume_threshold: 3
+           error_percent_threshold: 25
+           request_windows_time: 10

@@ -145,6 +145,13 @@ jewel:
                    error_percent_threshold: 25               失败率0~100
                    request_windows_time: 10                  时间窗口大小s
 ```
+### yaml配置加载+系统环境变量
+```
+temp:=Template{}
+	Load("test.yml", &temp)
+	resp,_:=json.Marshal(temp)
+	fmt.Println(string(resp))
+```
 ### 适用实例(jsonrpc2.0)
 ```golang
 client := jsonrpc.Config(rest.ClientConfig{

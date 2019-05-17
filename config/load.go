@@ -40,15 +40,15 @@ func scan(outType reflect.Type, outValue reflect.Value, prefix string) {
 				continue
 			}
 			sValue := outValue.Field(i)
+			prefixChild := ""
 			if prefix == "" {
-				prefix = sField.Tag.Get("yaml")
+				prefixChild = sField.Tag.Get("yaml")
 			} else {
-				prefix = prefix + "." + sField.Tag.Get("yaml")
+				prefixChild = prefix + "." + sField.Tag.Get("yaml")
 			}
-			scan(sField.Type, sValue, prefix)
+			scan(sField.Type, sValue, prefixChild)
 		}
 	}
-
 	if prefix == "" {
 		return
 	}
@@ -84,5 +84,6 @@ func scan(outType reflect.Type, outValue reflect.Value, prefix string) {
 	if outType.Kind() >= reflect.String {
 		outValue.SetString(osEnvStr)
 	}
+
 	return
 }
