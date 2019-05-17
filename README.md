@@ -135,7 +135,7 @@ jewel:
                max_idle_conns: 5                             最大闲置连接数
                idle_conn_timeout: 3000                       闲置连接超时时间ms
                disable_compression: true                     是否压缩
-               socket_timeout: 3000                          请求时间
+               socket_timeout: 3000                          请求时间ms
                reply_count: 3                                重试次数
                proxy: http://127.0.0.1:1087                  代理
              hystrix:                          熔断配置
