@@ -74,17 +74,11 @@ func DefaultProxy(proxy string) *RestTemplate {
 
 func Config(cfg ClientConfig) *RestTemplate {
 	var tr *http.Transport
-	if cfg.IdleConnTimeout <= 0 {
-		cfg.IdleConnTimeout = 3000
-	}
-	if cfg.SocketTimeout <= 0 {
-		cfg.SocketTimeout = 5000
-	}
 	if cfg.Proxy != "" {
 		u, _ := url.Parse(cfg.Proxy)
 		tr = &http.Transport{
 			MaxIdleConns:       cfg.MaxIdleConns,
-			IdleConnTimeout:    cfg.IdleConnTimeout * time.Millisecond,
+			IdleConnTimeout:    cfg.IdleConnTimeout,
 			DisableCompression: cfg.DisableCompression,
 			Proxy:              http.ProxyURL(u),
 		}
@@ -92,13 +86,13 @@ func Config(cfg ClientConfig) *RestTemplate {
 	} else {
 		tr = &http.Transport{
 			MaxIdleConns:       cfg.MaxIdleConns,
-			IdleConnTimeout:    cfg.IdleConnTimeout * time.Millisecond,
+			IdleConnTimeout:    cfg.IdleConnTimeout,
 			DisableCompression: cfg.DisableCompression,
 		}
 	}
 
 	client := &http.Client{Transport: tr}
-	client.Timeout = cfg.SocketTimeout * time.Millisecond
+	client.Timeout = cfg.SocketTimeout
 	return &RestTemplate{
 		Template: Template{
 			Client:      client,
