@@ -44,4 +44,5 @@ func TestGetHystrixTemplate(t *testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(dataMap)
 }
