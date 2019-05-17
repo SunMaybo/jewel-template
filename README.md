@@ -132,8 +132,8 @@ jewel:
              host: www.baidu.com                             域名
              hystrix_enabled: true                           是否熔断
              rest:                          httpclient 配置
-               max_idle_conns: 5                             最大连接数
-               max_idle_timeout: 3000                        最大连接时间ms
+               max_idle_conns: 5                             最大闲置连接数
+               idle_conn_timeout: 3000                       闲置连接超时时间ms
                disable_compression: true                     是否压缩
                socket_timeout: 3000                          请求时间
                reply_count: 3                                重试次数
