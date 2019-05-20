@@ -3,7 +3,7 @@ package config
 import (
 	"testing"
 	"fmt"
-	"jewel-template/template/hystrix"
+	"github.com/SunMaybo/jewel-template/template/hystrix"
 	"encoding/json"
 )
 
