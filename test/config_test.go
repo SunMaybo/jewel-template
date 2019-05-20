@@ -3,13 +3,14 @@ package test
 import (
 	"os"
 	"log"
-	"jewel-template/template"
+	"github.com/SunMaybo/jewel-template/template"
 	"gopkg.in/yaml.v2"
 	"fmt"
 	"io/ioutil"
 	"encoding/json"
 	"testing"
 )
+
 var factory = template.JewelTemplateFactory{}
 
 func init() {
