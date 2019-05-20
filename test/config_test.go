@@ -10,7 +10,6 @@ import (
 	"encoding/json"
 	"testing"
 )
-
 var factory = template.JewelTemplateFactory{}
 
 func init() {

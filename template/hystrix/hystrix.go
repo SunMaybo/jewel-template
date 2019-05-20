@@ -39,12 +39,10 @@ type RestConfig struct {
 	ReplyCount         int    `yaml:"reply_count"`
 	Proxy              string `yaml:"proxy"`
 }
-
 type HystrixTemplate struct {
 	rest    *rest.RestTemplate
 	service Service
 }
-
 func New(service Service, hystrixFunc func(name string, isOpen bool)) (*HystrixTemplate) {
 	if service.Schema == "" {
 		service.Schema = "http"
@@ -78,7 +76,6 @@ func New(service Service, hystrixFunc func(name string, isOpen bool)) (*HystrixT
 	}
 	return &ht
 }
-
 func (t *HystrixTemplate) GetForObject(name string, response interface{}, uriVariables ... string) *errors.HttpError {
 	return t.ExecuteForObject(name, http.MethodGet, nil, nil, response, uriVariables...)
 }
