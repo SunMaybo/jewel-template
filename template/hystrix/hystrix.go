@@ -176,7 +176,7 @@ func (t *HystrixTemplate) ExecuteWithCustomHystrix(name, method string, header h
 		return err
 	}
 	if !t.service.HystrixEnabled {
-		return t.rest.Execute(url, method, header, body, response, uriVariables...).(*errors.HttpError)
+		return t.rest.Execute(url, method, header, body, response, uriVariables...)
 	}
 	okChan := make(chan bool)
 	errorChan := hystrix.Go(name, func() error {
