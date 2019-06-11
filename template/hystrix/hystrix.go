@@ -71,16 +71,17 @@ func New(service Service, hystrixFunc func(name string, isOpen bool)) (*HystrixT
 			RequestVolumeThreshold: htx.RequestVolumeThreshold,
 			ErrorPercentThreshold:  htx.ErrorPercentThreshold,
 			RequestWindowsTime:     htx.RequestWindowsTime,
+			MaxConcurrentRequests: 60000,
 			Timeout:                60000,
 			AlertFunc:              hystrixFunc,
 		})
 	}
 	return &ht
 }
-func (t *HystrixTemplate) GetForObject(name string, response interface{}, uriVariables ... string) error{
+func (t *HystrixTemplate) GetForObject(name string, response interface{}, uriVariables ... string) error {
 	return t.ExecuteForObject(name, http.MethodGet, nil, nil, response, uriVariables...)
 }
-func (t *HystrixTemplate) PostForObject(name string, body, response interface{}, uriVariables ... string) error{
+func (t *HystrixTemplate) PostForObject(name string, body, response interface{}, uriVariables ... string) error {
 	return t.ExecuteForObject(name, http.MethodPost, nil, body, response, uriVariables...)
 }
 func (t *HystrixTemplate) PutForObject(name string, body, response interface{}, uriVariables ... string) error {
@@ -91,7 +92,7 @@ func (t *HystrixTemplate) DeleteForObject(name string, response interface{}, uri
 
 	return t.ExecuteForObject(name, http.MethodDelete, nil, nil, response, uriVariables...)
 }
-func (t *HystrixTemplate) HeadForObject(name string, header http.Header, response interface{}, uriVariables ... string) error{
+func (t *HystrixTemplate) HeadForObject(name string, header http.Header, response interface{}, uriVariables ... string) error {
 
 	return t.ExecuteForObject(name, http.MethodHead, header, nil, response, uriVariables...)
 }
