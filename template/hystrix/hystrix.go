@@ -71,7 +71,7 @@ func New(service Service, hystrixFunc func(name string, isOpen bool)) (*HystrixT
 			RequestVolumeThreshold: htx.RequestVolumeThreshold,
 			ErrorPercentThreshold:  htx.ErrorPercentThreshold,
 			RequestWindowsTime:     htx.RequestWindowsTime,
-			MaxConcurrentRequests: 60000,
+			MaxConcurrentRequests:  60000,
 			Timeout:                60000,
 			AlertFunc:              hystrixFunc,
 		})
