@@ -1,6 +1,6 @@
-package template
+package jewel_template
 
-import "github.com/SunMaybo/jewel-template/template/hystrix"
+import "github.com/SunMaybo/jewel-template/hystrix"
 
 type ServiceBucket map[string]hystrix.Service
 type Template struct {

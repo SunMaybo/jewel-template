@@ -2,8 +2,8 @@ package hystrix
 
 import (
 	"net/http"
-	"github.com/SunMaybo/jewel-template/template/rest"
-	"github.com/SunMaybo/jewel-template/template/errors"
+	"github.com/SunMaybo/jewel-template/rest"
+	"github.com/SunMaybo/jewel-template/errors"
 	"github.com/SunMaybo/hystrix-go/hystrix"
 	"time"
 )

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 	"fmt"
-	"github.com/SunMaybo/jewel-template/template/rest"
+	"github.com/SunMaybo/jewel-template/rest"
 )
 
 func TestClient_Call(t *testing.T) {

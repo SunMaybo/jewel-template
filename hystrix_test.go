@@ -1,8 +1,8 @@
-package template
+package jewel_template
 
 import (
 	"testing"
-	"github.com/SunMaybo/jewel-template/template/hystrix"
+	"github.com/SunMaybo/jewel-template/hystrix"
 	"github.com/bdlm/log"
 	"fmt"
 	"errors"
